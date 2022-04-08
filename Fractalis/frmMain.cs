@@ -14,7 +14,7 @@ namespace Fractalis
 
         private void btnGerar_Click(object sender, EventArgs e)
         {            
-            bitmap = new Bitmap(600, 600);
+            bitmap = new Bitmap(1920, 1080);
             juliaSet = new JuliaSet(bitmap);
             
             juliaSet.Render(bitmap);
@@ -25,6 +25,11 @@ namespace Fractalis
         {
             if(juliaSet != null && juliaSet.Image != null)
                 pictureBox1.BackgroundImage = juliaSet.Image;            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            bitmap.Save("julia-set.png");
         }
     }
 }

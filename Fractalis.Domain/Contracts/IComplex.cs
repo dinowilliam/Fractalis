@@ -2,7 +2,7 @@
 {
     public interface IComplex
     {
-        int Real { get; set; }
-        int Imaginary { get; set; }
+        double Real { get; set; }
+        double Imaginary { get; set; }
     }
 }

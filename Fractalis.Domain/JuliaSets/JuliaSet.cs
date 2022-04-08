@@ -8,8 +8,8 @@ namespace Fractalis.Domain
     public class JuliaSet : IFractal 
     {
         private Bitmap _image;
-        private int _iteration = 0;
-        private int _maximumIterations = 1000000;
+        private int _iteration;
+        private int _maximumIterations = 255;
 
         public JuliaSet(Bitmap image) {
             
@@ -25,52 +25,39 @@ namespace Fractalis.Domain
 
         private bool Iterate() {
 
-            int x, y, R = 2, cy, cx; ;
-            BaseComplex z = new BaseComplex();
+            // R => escape radius  # choose R > 0 such that R**2 - R >= sqrt(cx**2 + cy**2) R = R ^ 2 - R;
+            int R = 4;
 
-            //R = R ^ 2 - R;
+            int x, y, zoom = 1, MoveX = 0, MoveY = 0;
+            double cx = -0.7, cy = 0.27015;
+            BaseComplex z = new BaseComplex();
+            
+            var colors = (from c in Enumerable.Range(0, 256)
+                          select Color.FromArgb((c >> 5) * 36, (c >> 3 & 7) * 36, (c & 3) * 85)).ToArray();
 
             for (x = 0; x <= _image.Width-1; x++) {
 
                 for (y = 0; y <= _image.Height-1; y++) {
+                    
+                    // zx represents the real part of z. Scaled x coordinate of pixel # (scale to be between -R and R)
+                    z.Real = 1.5 * (x - _image.Width / 2) / (0.5 * zoom * _image.Width) + MoveX;
 
-                    Color color;
-                    //var color = _image.GetPixel(x, y);
-
-                    cx = x;
-                    cy = y;
-
-                    // escape radius  # choose R > 0 such that R**2 - R >= sqrt(cx**2 + cy**2)
-
-
-                    //var complex = Complex.Sqrt(Complex.Pow(cx,2) + Complex.Pow(cy ,2));
-
-                    // zx represents the real part of z.
-                    // scaled x coordinate of pixel # (scale to be between -R and R)
-                    z.Real = cx * cx;
-
-                    // zy represents the imaginary part of z.
-                    // scaled y coordinate of pixel # (scale to be between -R and R)
-                    z.Imaginary = cy * cy;
+                    // zy represents the imaginary part of z.Scaled y coordinate of pixel # (scale to be between -R and R)
+                    z.Imaginary = 1.0 * (y - _image.Height / 2) / (0.5 * zoom * _image.Height) + MoveY;
                
                     _iteration = 0;                    
 
-                    while (z.Real * z.Real + z.Imaginary * z.Imaginary < (R ^ 2) && _iteration < _maximumIterations) {
+                    while (z.Real * z.Real + z.Imaginary * z.Imaginary < Math.Pow(R, 2) && _iteration < _maximumIterations) {
                         
-                        z.Imaginary = 2 * z.Real * z.Imaginary + cy;
-                        z.Real = (z.Real * z.Real) - (z.Imaginary * z.Imaginary) + cx;
+                        var tempReal = z.Real * z.Real - z.Imaginary * z.Imaginary + cx;
+                        z.Imaginary = 2.0 * z.Real * z.Imaginary + cy;
+                        z.Real = tempReal;
 
-                        _iteration = _iteration + 1;
+                        _iteration++;
                     }
-
-                    if (_iteration == _maximumIterations) {
-                        color = Color.Black;
-                    }
-                    else {
-                        color = Color.FromArgb(_iteration, 0, _iteration, 0);                      
-                    }
-
-                    _image.SetPixel(x, y, color);                    
+                  
+                    _image.SetPixel(x, y, colors[_iteration]);                    
+                                        
                 }
             }
 
