@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32228.430
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fractalis", "Fractalis\Fractalis.csproj", "{2FE82BDD-AF28-4BA3-8705-28B3C20B4C95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fractalis.Domain", "Fractalis.Domain\Fractalis.Domain.csproj", "{6B22E80F-016A-4C09-A6C9-01BBFF77983F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2FE82BDD-AF28-4BA3-8705-28B3C20B4C95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FE82BDD-AF28-4BA3-8705-28B3C20B4C95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FE82BDD-AF28-4BA3-8705-28B3C20B4C95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FE82BDD-AF28-4BA3-8705-28B3C20B4C95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B22E80F-016A-4C09-A6C9-01BBFF77983F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B22E80F-016A-4C09-A6C9-01BBFF77983F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B22E80F-016A-4C09-A6C9-01BBFF77983F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B22E80F-016A-4C09-A6C9-01BBFF77983F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AAEA2514-48D2-4E71-AB4F-2A7EBF3F1B95}
+	EndGlobalSection
+EndGlobal
