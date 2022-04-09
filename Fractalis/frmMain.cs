@@ -1,21 +1,28 @@
 using Fractalis.Domain;
+using Fractalis.Domain.Base;
 using Fractalis.Domain.Contracts;
 
 namespace Fractalis
 {
     public partial class frmMain : Form
     {        
-        IFractal fractalToRun;
+        private IFractal fractalToRun;
+        private readonly BaseApplication _baseApplication;
+        private Dictionary<string, IFractal> fractalsList;
 
-        Dictionary<string, IFractal> fractalsList = new Dictionary<string, IFractal> {
-            { "Julia Set",  new JuliaSet(new Bitmap(1920, 1080)) }        
-        };
+        public frmMain(){
 
-        public frmMain()
-        {
             InitializeComponent();
 
+            _baseApplication = new BaseApplication();
+            _baseApplication.StartupPath = Application.StartupPath;
+
+            fractalsList = new Dictionary<string, IFractal> {
+                { "Julia Set",  new JuliaSet(_baseApplication) }
+            };
+
             cmbFractalList.DataSource = fractalsList.Select(f => f.Key).ToList();
+
         }
 
         private void btnGenerate_Click(object sender, EventArgs e)
@@ -33,11 +40,7 @@ namespace Fractalis
 
         private void btnSave_Click(object sender, EventArgs e){
 
-            string[] files = Directory.GetFiles(Application.StartupPath, "julia-set*.png");
-
-            string fileName = files.Count() > 0 ? "julia-set" + (files.Count() + 1) + ".png" : "julia-set1.png";
-
-            fractalToRun.Image.Save(fileName);
+            fractalToRun.Save();
         }
     }
 }
