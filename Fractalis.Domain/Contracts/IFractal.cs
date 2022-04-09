@@ -2,9 +2,9 @@
 
 namespace Fractalis.Domain.Contracts
 {
-    internal interface IFractal {
+    public interface IFractal {
 
-        bool Render(Bitmap image);
+        bool Render(Bitmap image, int zoom, int movex, int movey, bool inverse);
         Bitmap Image { get; }
     }
 }

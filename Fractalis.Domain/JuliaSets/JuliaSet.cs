@@ -16,19 +16,19 @@ namespace Fractalis.Domain
             _image = image;
         }
 
-        public bool Render(Bitmap image)       
+        public bool Render(Bitmap image, int zoom, int movex, int movey, bool inverse)       
         {
             _image = image;
 
-            return Iterate();
+            return Iterate(zoom, movex, movey, inverse);
         }
 
-        private bool Iterate() {
+        private bool Iterate(int Zoom, int MoveX, int MoveY, bool inverse) {
 
             // R => escape radius  # choose R > 0 such that R**2 - R >= sqrt(cx**2 + cy**2) R = R ^ 2 - R;
-            int R = 4;
-
-            int x, y, zoom = 1, MoveX = 0, MoveY = 0;
+            int R = 2;
+            
+            int x, y;
             double cx = -0.7, cy = 0.27015;
             BaseComplex z = new BaseComplex();
             
@@ -40,23 +40,25 @@ namespace Fractalis.Domain
                 for (y = 0; y <= _image.Height-1; y++) {
                     
                     // zx represents the real part of z. Scaled x coordinate of pixel # (scale to be between -R and R)
-                    z.Real = 1.5 * (x - _image.Width / 2) / (0.5 * zoom * _image.Width) + MoveX;
+                    z.Real = 1.5 * (x - _image.Width / 2) / (0.5 * Zoom * _image.Width) + MoveX;
 
                     // zy represents the imaginary part of z.Scaled y coordinate of pixel # (scale to be between -R and R)
-                    z.Imaginary = 1.0 * (y - _image.Height / 2) / (0.5 * zoom * _image.Height) + MoveY;
+                    z.Imaginary = 1.0 * (y - _image.Height / 2) / (0.5 * Zoom * _image.Height) + MoveY;
                
                     _iteration = 0;                    
 
-                    while (z.Real * z.Real + z.Imaginary * z.Imaginary < Math.Pow(R, 2) && _iteration < _maximumIterations) {
+                    while (Math.Pow(z.Real, 2) + Math.Pow(z.Imaginary, 2) < Math.Pow(R, 2) && _iteration < _maximumIterations) {
                         
-                        var tempReal = z.Real * z.Real - z.Imaginary * z.Imaginary + cx;
+                        var temporaryRealPart = Math.Pow(z.Real, 2) - Math.Pow(z.Imaginary, 2) + cx;
                         z.Imaginary = 2.0 * z.Real * z.Imaginary + cy;
-                        z.Real = tempReal;
+                        z.Real = temporaryRealPart;
 
                         _iteration++;
                     }
-                  
-                    _image.SetPixel(x, y, colors[_iteration]);                    
+
+                    var colorNumber = inverse ? _maximumIterations - _iteration : _iteration;
+
+                    _image.SetPixel(x, y, colors[colorNumber]);                    
                                         
                 }
             }
