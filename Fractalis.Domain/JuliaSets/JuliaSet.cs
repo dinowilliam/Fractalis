@@ -17,16 +17,7 @@ namespace Fractalis.Domain
 
         private BaseComplex z;
 
-        private BaseComplex _c;
-
-        // cX => 
-        //double _cX = -0.852;
-        //double _cX = -0.7;
-        //double _cX = -1.26;
-
-        // cY => 
-        //double _cY = 0.27015;
-        //double _cY = 0.0;
+        private BaseComplex _c;       
         
         private Color[] _colorPalette = (from c in Enumerable.Range(0, 256)
                                          select Color.FromArgb((c >> 5) * 36, (c >> 3 & 7) * 36, (c & 3) * 85)).ToArray();
