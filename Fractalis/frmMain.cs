@@ -30,6 +30,14 @@ namespace Fractalis
         {
             fractalsList.TryGetValue(cmbFractalList.SelectedItem.ToString(), out fractalToRun);
 
+            fractalToRun.c = new BaseComplex(Convert.ToDouble(nudCRealPart.Value), Convert.ToDouble(nudCImaginaryPart.Value));
+
+            if (fractalToRun.IsMultiFractal){
+                lblMultiFractalValue.Visible = fractalToRun.IsMultiFractal;
+                nudMultiFractalValue.Visible = fractalToRun.IsMultiFractal;
+                fractalToRun.N = Convert.ToInt32(nudMultiFractalValue.Value);
+            }
+
             fractalToRun.Render(new Bitmap(1920, 1080), Convert.ToInt32(nudZoom.Value), 0, 0, chkInverted.Checked);            
         }
 

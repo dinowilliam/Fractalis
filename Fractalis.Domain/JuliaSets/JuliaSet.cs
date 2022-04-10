@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace Fractalis.Domain
 {
-    public class JuliaSet : IFractal 
+    public class JuliaSet : IFractal
     {
         private readonly IApplication _application;
 
@@ -99,5 +99,7 @@ namespace Fractalis.Domain
         public int R { get => _R; set => _R = value; }
         public BaseComplex c { get => _c; set => _c = value; }        
         public Color[] ColorPalette { get => _colorPalette; set => _colorPalette = value; }
+        public bool IsMultiFractal { get => false; }
+        public int N { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }

@@ -33,18 +33,27 @@
             this.pcbFractal = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.cmbFractalList = new System.Windows.Forms.ComboBox();
-            this.btnGenerate = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.nudMultiFractalValue = new System.Windows.Forms.NumericUpDown();
+            this.lblMultiFractalValue = new System.Windows.Forms.Label();
+            this.nudCRealPart = new System.Windows.Forms.NumericUpDown();
+            this.nudCImaginaryPart = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
+            this.chkInverted = new System.Windows.Forms.CheckBox();
             this.nudZoom = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            this.chkInverted = new System.Windows.Forms.CheckBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnGenerate = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.tmrImage = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbFractal)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMultiFractalValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCRealPart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCImaginaryPart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudZoom)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,19 +98,18 @@
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.cmbFractalList, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.btnGenerate, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.btnSave, 0, 3);
-            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 1);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(777, 23);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 7;
+            this.tableLayoutPanel2.RowCount = 6;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27.52294F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27.52294F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27.52294F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.43119F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 51F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33332F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(166, 380);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
@@ -115,46 +123,114 @@
             this.cmbFractalList.Size = new System.Drawing.Size(160, 23);
             this.cmbFractalList.TabIndex = 0;
             // 
-            // btnGenerate
-            // 
-            this.btnGenerate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGenerate.Location = new System.Drawing.Point(3, 83);
-            this.btnGenerate.Name = "btnGenerate";
-            this.btnGenerate.Size = new System.Drawing.Size(160, 44);
-            this.btnGenerate.TabIndex = 1;
-            this.btnGenerate.Text = "Generate";
-            this.btnGenerate.UseVisualStyleBackColor = true;
-            this.btnGenerate.Click += new System.EventHandler(this.btnGenerate_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.Location = new System.Drawing.Point(3, 133);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(160, 44);
-            this.btnSave.TabIndex = 2;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.nudMultiFractalValue, 0, 5);
+            this.tableLayoutPanel3.Controls.Add(this.lblMultiFractalValue, 0, 4);
+            this.tableLayoutPanel3.Controls.Add(this.nudCRealPart, 0, 3);
+            this.tableLayoutPanel3.Controls.Add(this.nudCImaginaryPart, 0, 3);
             this.tableLayoutPanel3.Controls.Add(this.label2, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.chkInverted, 1, 1);
             this.tableLayoutPanel3.Controls.Add(this.nudZoom, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.chkInverted, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.label3, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.label4, 1, 2);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 33);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(160, 44);
+            this.tableLayoutPanel3.RowCount = 6;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(160, 148);
             this.tableLayoutPanel3.TabIndex = 4;
+            // 
+            // nudMultiFractalValue
+            // 
+            this.nudMultiFractalValue.Location = new System.Drawing.Point(3, 113);
+            this.nudMultiFractalValue.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudMultiFractalValue.Name = "nudMultiFractalValue";
+            this.nudMultiFractalValue.Size = new System.Drawing.Size(74, 23);
+            this.nudMultiFractalValue.TabIndex = 12;
+            this.nudMultiFractalValue.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // lblMultiFractalValue
+            // 
+            this.lblMultiFractalValue.AutoSize = true;
+            this.lblMultiFractalValue.Location = new System.Drawing.Point(3, 90);
+            this.lblMultiFractalValue.Name = "lblMultiFractalValue";
+            this.lblMultiFractalValue.Size = new System.Drawing.Size(16, 15);
+            this.lblMultiFractalValue.TabIndex = 11;
+            this.lblMultiFractalValue.Text = "N";
+            // 
+            // nudCRealPart
+            // 
+            this.nudCRealPart.DecimalPlaces = 5;
+            this.nudCRealPart.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            327680});
+            this.nudCRealPart.Location = new System.Drawing.Point(3, 63);
+            this.nudCRealPart.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            327680});
+            this.nudCRealPart.Minimum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            -2147221504});
+            this.nudCRealPart.Name = "nudCRealPart";
+            this.nudCRealPart.Size = new System.Drawing.Size(74, 23);
+            this.nudCRealPart.TabIndex = 10;
+            this.nudCRealPart.Value = new decimal(new int[] {
+            7,
+            0,
+            0,
+            -2147418112});
+            // 
+            // nudCImaginaryPart
+            // 
+            this.nudCImaginaryPart.DecimalPlaces = 5;
+            this.nudCImaginaryPart.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            327680});
+            this.nudCImaginaryPart.Location = new System.Drawing.Point(83, 63);
+            this.nudCImaginaryPart.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            327680});
+            this.nudCImaginaryPart.Minimum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            -2147221504});
+            this.nudCImaginaryPart.Name = "nudCImaginaryPart";
+            this.nudCImaginaryPart.Size = new System.Drawing.Size(74, 23);
+            this.nudCImaginaryPart.TabIndex = 9;
+            this.nudCImaginaryPart.Value = new decimal(new int[] {
+            27015,
+            0,
+            0,
+            327680});
             // 
             // label2
             // 
@@ -165,9 +241,19 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Inverted";
             // 
+            // chkInverted
+            // 
+            this.chkInverted.AutoSize = true;
+            this.chkInverted.Location = new System.Drawing.Point(83, 18);
+            this.chkInverted.Name = "chkInverted";
+            this.chkInverted.Size = new System.Drawing.Size(43, 19);
+            this.chkInverted.TabIndex = 6;
+            this.chkInverted.Text = "Yes";
+            this.chkInverted.UseVisualStyleBackColor = true;
+            // 
             // nudZoom
             // 
-            this.nudZoom.Location = new System.Drawing.Point(3, 25);
+            this.nudZoom.Location = new System.Drawing.Point(3, 18);
             this.nudZoom.Minimum = new decimal(new int[] {
             1,
             0,
@@ -191,15 +277,47 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Zoom";
             // 
-            // chkInverted
+            // label3
             // 
-            this.chkInverted.AutoSize = true;
-            this.chkInverted.Location = new System.Drawing.Point(83, 25);
-            this.chkInverted.Name = "chkInverted";
-            this.chkInverted.Size = new System.Drawing.Size(43, 16);
-            this.chkInverted.TabIndex = 6;
-            this.chkInverted.Text = "Yes";
-            this.chkInverted.UseVisualStyleBackColor = true;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 45);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(34, 15);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Re(c)";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(83, 45);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 15);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Im(c)";
+            // 
+            // btnGenerate
+            // 
+            this.btnGenerate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGenerate.Location = new System.Drawing.Point(3, 233);
+            this.btnGenerate.Name = "btnGenerate";
+            this.btnGenerate.Size = new System.Drawing.Size(160, 43);
+            this.btnGenerate.TabIndex = 1;
+            this.btnGenerate.Text = "Generate";
+            this.btnGenerate.UseVisualStyleBackColor = true;
+            this.btnGenerate.Click += new System.EventHandler(this.btnGenerate_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Location = new System.Drawing.Point(3, 284);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(160, 26);
+            this.btnSave.TabIndex = 2;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // tmrImage
             // 
@@ -220,6 +338,9 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMultiFractalValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCRealPart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCImaginaryPart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudZoom)).EndInit();
             this.ResumeLayout(false);
 
@@ -239,5 +360,11 @@
         private Label label1;
         private Label label2;
         private CheckBox chkInverted;
+        private NumericUpDown nudCImaginaryPart;
+        private Label label3;
+        private Label label4;
+        private NumericUpDown nudCRealPart;
+        private Label lblMultiFractalValue;
+        private NumericUpDown nudMultiFractalValue;
     }
 }
