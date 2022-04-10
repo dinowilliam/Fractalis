@@ -18,7 +18,8 @@ namespace Fractalis
             _baseApplication.StartupPath = Application.StartupPath;
 
             fractalsList = new Dictionary<string, IFractal> {
-                { "Julia Set",  new JuliaSet(_baseApplication) }
+                { "Julia Set",  new JuliaSet(_baseApplication) },
+                { "Multi Julia Set",  new MultiJuliaSet(_baseApplication) },
             };
 
             cmbFractalList.DataSource = fractalsList.Select(f => f.Key).ToList();
